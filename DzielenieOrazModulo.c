@@ -21,7 +21,7 @@ int main()
 
 //Albo druga opcja:
 //{
-//    int liczba, dzielnik;
+//    int liczba, dzielnik, wynikDzielenia, resztaDzielenia;
 //        printf("Program stosujacy / oraz %%\n\n");
 //        printf("Podaj liczbe: ");
 //        scanf("%i", &liczba);
