@@ -4,8 +4,8 @@
 int main() {
     
     int a;
-    printf("Podaj liczbę:\n");
-    scanf("%i", &a);
+    printf("Podaj liczbę:");
+    scanf("%i", &a); printf("\n");
     
         
     do 
@@ -13,9 +13,8 @@ int main() {
         
         if (a <= 0)
         {
-            printf("Zła liczba, wybierz inną:");
-        printf("Podaj liczbę:\n");
-        scanf("%i", &a);
+            printf("L:iczba musi być dodatnia! Podaj liczbę jeszcze raz:");
+            scanf("%i", &a);
             
         }
         
@@ -32,9 +31,9 @@ int main() {
         }
             } while (a != 1);
         
-        printf("\n%i", a);
+        printf("%i", a);
         
-        printf("\nKoniec!");
+        printf("\n\nKoniec!");
     
     
     
