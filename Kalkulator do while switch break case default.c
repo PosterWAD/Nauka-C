@@ -5,7 +5,8 @@ int main()
 
 {
 
-    float a, b, c; 
+    float a, b;
+    double c; 
     int typDzialania;
     do {
     printf("Jakie działanie chcesz wykonać?\n\n1. Mnożenie 2. Dzielenie 3. Potęgowanie 4. Pierwiastkowanie 5. Wyjście\n\nAby wybrać napisz liczbę:");
@@ -35,7 +36,6 @@ int main()
                 scanf("%f", &a);
             printf("\nPodaj wykładnik:"); 
                 scanf("%f", &b);
-            double c;
             c=pow(a, b);
             printf("\nWynik potęgowania %.2f przez %.2f wynosi %.4lf", a, b, c);
                 break;
