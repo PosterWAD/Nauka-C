@@ -21,7 +21,7 @@ int main() {
     
     printf("Suma podanych liczb wynosi: %.2f\n", (float)suma);
    
-    float sredniaArytmetyczna = suma/5;
+    float sredniaArytmetyczna = suma/5.0;
     printf("Średnia arytmetyczna podanych liczb wynosi: %.2f", sredniaArytmetyczna);
    
     return 0;
