@@ -3,7 +3,6 @@
 int main()
 {
  int macierz[3][5];
- int a;
  
         for (int i = 0; i < 3; i++)
         
@@ -27,7 +26,6 @@ int main()
             printf("\t");
             }
             
-            if (i < 3)
             printf("\n");
         }
 
