@@ -54,11 +54,11 @@ int main()
             
             
         }
-        
+        printf("\n");
         
     }
         
-    printf("\nSuma przekątnej macierzy: %i", suma);
+    printf("Suma przekątnej macierzy: %i", suma);
         
 	return 0;
 }
