@@ -29,7 +29,8 @@ int main()
         else printf("%i ", parzyste[i]);
     }
     
+    free(wszystkie);
+    free(parzyste);
     
-
     return 0;
 }
