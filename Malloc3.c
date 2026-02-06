@@ -14,12 +14,16 @@ int main()
     
     printf("Oto twój znak '%c' powielony %i razy: ", znak, n);
     
+    haslo[n] = '\0'; // wtedy dodaje na końcu '\0', bo [n] to ostatni wyraz w tabeli
     for (int i = 0; i < n; i++){
         haslo[i]=znak;
         printf("%c", haslo[i]);
     }
-
+    
+    printf("\n%s", haslo); // tutaj jako string skoro mam na końcu '\0'
+    
     free(haslo);
+    haslo = NULL;
     
     return 0;
 }
