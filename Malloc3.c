@@ -19,6 +19,7 @@ int main()
         printf("%c", haslo[i]);
     }
 
+    free(haslo);
     
     return 0;
 }
