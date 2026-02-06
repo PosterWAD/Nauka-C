@@ -30,7 +30,9 @@ int main()
     }
     
     free(wszystkie);
+    wszystkie = NULL;
     free(parzyste);
+    parzyste = NULL;
     
     return 0;
 }
