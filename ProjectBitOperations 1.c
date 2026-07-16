@@ -59,8 +59,8 @@ int main() {
     speed_change(&rejestr); // 00 -> 01 
     speed_change(&rejestr); // 01 -> 10 
 
-    rejestr |= 0b10000000;  // Sprawdzenie błędu
-    error(&rejestr);       
+    rejestr |= 0b10000000;  //Wywołanie błędu w rejestrze
+    error(&rejestr);   // Sprawdzenie błędu
 
     return 0; 
 }
