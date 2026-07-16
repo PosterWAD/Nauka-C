@@ -13,7 +13,6 @@ int main() {
 
     printf("Przed zamiana: a = %d, b = %d\n", a, b);
 
-    // Wywołanie funkcji. Znak '&' oznacza adres zmiennej.
     zamien(&a, &b);
 
     printf("Po zamianie:   a = %d, b = %d\n", a, b);
