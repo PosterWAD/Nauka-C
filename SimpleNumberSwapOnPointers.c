@@ -19,4 +19,4 @@ int main() {
     printf("Po zamianie:   a = %d, b = %d\n", a, b);
 
     return 0;
-}
+} 
