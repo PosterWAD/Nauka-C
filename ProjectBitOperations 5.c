@@ -21,9 +21,9 @@ int main() {
     printf("HP bossa: %d\n", (*wskaznikBossa).hp);
     printf("Obrazenia bossa: %d\n", (*wskaznikBossa).obrazenia);
 
-    (*wskaznikGracza).hp += 50;
-    (*wskaznikGracza).mana -= 50;
-
+    wskaznikGracza->hp += 50;   // zamiast (*wskaznikGracza).hp += 50;
+    wskaznikGracza->mana -= 50; // zamiast (*wskaznikGracza).mana -= 50;
+    
     printf("HP po leczeniu: %d\n", (*wskaznikGracza).hp);
     printf("Mana po leczeniu: %d\n", (*wskaznikGracza).mana);
 
