@@ -2,13 +2,13 @@
 unsigned char on_off_wentylator1(unsigned char PORT_A, unsigned char Wentylator) {
     if ((PORT_A & 0b00000010) == 0b00000000 ) {
         // Wentylator jest wyłączony
-        PORT_A = PORT_A | Wentylator; // Włącz wentylator
+        PORT_A |= Wentylator; // Włącz wentylator
         return PORT_A; // Włącz wentylator
     }
         
     else if ((PORT_A & 0b00000010) == Wentylator) {
         // Wentylator jest włączony
-        PORT_A = PORT_A & ~Wentylator; // Wyłącz wentylator, bo ~Wentylator = 0b11111101
+        PORT_A &= ~Wentylator; // Wyłącz wentylator, bo ~Wentylator = 0b11111101
         return PORT_A;
     }
 }
@@ -18,6 +18,7 @@ unsigned char on_off_wentylator2(unsigned char PORT_A) {
     }
     else return (PORT_A & ~2);
 }
+
 int main() {
     unsigned char PORT_A = 0b00000000;
     unsigned char Wentylator = 0b00000010;
