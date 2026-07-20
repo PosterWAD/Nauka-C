@@ -12,21 +12,20 @@ int main() {
     struct Postac gracz1 = {"Gracz1", 50, 100, 10};
     struct Postac boss = {"Boss", 200, 50, 25};
 
-    int *wskaznikHP = &gracz1.hp;
-    int *wskaznikMana = &gracz1.mana;
-    int *wskaznikObrazenia = &gracz1.obrazenia;
+    struct Postac *wskaznikGracza = &gracz1;
+    struct Postac *wskaznikBossa = &boss;
+    
+    printf("HP przed leczeniem: %d\n", (*wskaznikGracza).hp);
+    printf("Mana przed leczeniem: %d\n", (*wskaznikGracza).mana);
+    printf("Obrazenia gracz1: %d\n", (*wskaznikGracza).obrazenia);
+    printf("HP bossa: %d\n", (*wskaznikBossa).hp);
+    printf("Obrazenia bossa: %d\n", (*wskaznikBossa).obrazenia);
 
-    printf("HP przed leczeniem: %d\n", gracz1.hp);
-    printf("Mana przed leczeniem: %d\n", gracz1.mana);
-    printf("Obrazenia gracz1: %d\n", gracz1.obrazenia);
-    printf("HP bossa: %d\n", boss.hp);
-    printf("Obrazenia bossa: %d\n", boss.obrazenia);
+    (*wskaznikGracza).hp += 50;
+    (*wskaznikGracza).mana -= 50;
 
-    *wskaznikHP += 50;
-    *wskaznikMana -= 50;
-
-    printf("HP po leczeniu: %d\n", gracz1.hp);
-    printf("Mana po leczeniu: %d\n", gracz1.mana);
+    printf("HP po leczeniu: %d\n", (*wskaznikGracza).hp);
+    printf("Mana po leczeniu: %d\n", (*wskaznikGracza).mana);
 
     return 0;
 }
