@@ -21,6 +21,10 @@ unsigned char on_off_wentylator2(unsigned char PORT_A) {
 unsigned char on_off_wentylator3(unsigned char PORT_A) {
     return ((PORT_A & 0b00000010) == 0b00000000 )? (PORT_A | 2) : (PORT_A & ~2);
 }
+unsigned char on_off_wentylator4(unsigned char PORT_A) {
+    return (PORT_A ^ 0b00000010);
+
+}
 
 int main() {
     unsigned char PORT_A = 0b00000000;
@@ -28,6 +32,6 @@ int main() {
     on_off_wentylator1(PORT_A, Wentylator);
     on_off_wentylator2(PORT_A);
     on_off_wentylator3(PORT_A);
-    
+    on_off_wentylator4(PORT_A);
     return 0;
 }
