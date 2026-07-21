@@ -25,6 +25,10 @@ unsigned char on_off_wentylator4(unsigned char PORT_A) {
     return (PORT_A ^ 0b00000010);
 } //PODOBNO NAJSZYBSZE 
 
+unsigned char on_off_pompa(unsigned char PORT_A) {
+return PORT_A ^ 0b00000001;
+}
+
 int main() {
     unsigned char PORT_A = 0b00000000;
     unsigned char Wentylator = 0b00000010;
@@ -32,6 +36,6 @@ int main() {
     PORT_A = on_off_wentylator2(PORT_A);
     PORT_A = on_off_wentylator3(PORT_A);
     PORT_A = on_off_wentylator4(PORT_A);
-
+    PORT_A = on_off_pompa(PORT_A);
     return 0;
 }
