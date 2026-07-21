@@ -26,25 +26,30 @@ unsigned char on_off_wentylator4(unsigned char PORT_A) {
 } //PODOBNO NAJSZYBSZE 
 
 unsigned char on_off_pompa(unsigned char PORT_A) {
-return PORT_A ^ 0b00000001;
+    return PORT_A ^ 0b00000001;
 }
 
 unsigned char on_off_swiatla(unsigned char PORT_A) {
-return PORT_A ^ 0b00000100;
+    return PORT_A ^ 0b00000100;
 }
+unsigned char syrena_alarmowa(unsigned char PORT_A) {
+    return 0b10000001;
+}
+
 
 int main() {
     unsigned char PORT_A = 0b00000000;
     unsigned char Pompa = 0b00000001;
     unsigned char Wentylator = 0b00000010;
     unsigned char Swiatla = 0b00000100;
-
+    unsigned char syrena = 0b10000000;
     PORT_A = on_off_wentylator1(PORT_A, Wentylator);
     PORT_A = on_off_wentylator2(PORT_A);
     PORT_A = on_off_wentylator3(PORT_A);
     PORT_A = on_off_wentylator4(PORT_A);
     PORT_A = on_off_pompa(PORT_A);
     PORT_A = on_off_swiatla(PORT_A);
+    PORT_A = syrena_alarmowa(PORT_A);
 
     return 0;
 }
