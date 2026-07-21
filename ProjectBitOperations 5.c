@@ -43,6 +43,13 @@ unsigned char wylacz_syrene(unsigned char PORT_A) {
     return PORT_A & ~(1<<7);
 }
 
+int czy_pompa_dziala(unsigned char PORT_A) {
+    if (PORT_A & 0b00000001) {
+        return 1;
+    }
+    return 0;
+}
+
 int main() {
     unsigned char PORT_A = 0b00000000;
     unsigned char Pompa = 0b00000001;
@@ -56,7 +63,7 @@ int main() {
     PORT_A = on_off_wentylator4(PORT_A);
 
     PORT_A = on_off_pompa(PORT_A);
-    
+
     PORT_A = on_off_swiatla(PORT_A);
 
     PORT_A = syrena_alarmowa(PORT_A);
