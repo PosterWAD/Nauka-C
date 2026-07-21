@@ -9,7 +9,7 @@ unsigned char wlacz(unsigned char port, unsigned char urzadzenie) {
 }
 
 unsigned char wylacz(unsigned char port, unsigned char urzadzenie) {
-    return port ^ urzadzenie; // lub return port & ~urzadzenie;
+    return port & ~urzadzenie; // lub return port ^ urzadzenie;
 }
 
 int main() {
