@@ -4,6 +4,13 @@
 #define SWIATLA (1<<2)
 #define SYRENA (1<<7)
 
+unsigned char wlacz(unsigned char port, unsigned char urzadzenie) {
+    return port | urzadzenie;
+}
+
+unsigned char wylacz(unsigned char port, unsigned char urzadzenie) {
+    return port ^ urzadzenie; // lub return port & ~urzadzenie;
+}
 
 int main() {
     unsigned char PORT_A = 0b00000000;
