@@ -12,6 +12,10 @@ unsigned char wylacz(unsigned char port, unsigned char urzadzenie) {
     return port & ~urzadzenie; // lub return port ^ urzadzenie;
 }
 
+int czy_wlaczone(unsigned char port, unsigned char urzadzenie) {
+    return (port & urzadzenie)? 1 : 0;
+}
+
 int main() {
     unsigned char PORT_A = 0b00000000;
     
