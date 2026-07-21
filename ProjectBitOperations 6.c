@@ -19,5 +19,9 @@ int czy_wlaczone(unsigned char port, unsigned char urzadzenie) {
 int main() {
     unsigned char PORT_A = 0b00000000;
     
+    PORT_A = wlacz(PORT_A, POMPA | SYRENA);
+    PORT_A = wylacz(PORT_A, WENTYLATOR | SWIATLA);
+    PORT_A =| (POMPA | SYRENA) & ~(WENTYLATOR | SWIATLA);
+
     return 0;
 }
