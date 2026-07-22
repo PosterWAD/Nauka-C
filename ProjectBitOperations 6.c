@@ -3,12 +3,14 @@
 #define WENTYLATOR (1<<1)
 #define SWIATLA (1<<2)
 #define SYRENA (1<<7)
+
 #define CZUJNIK_DYMU (1<<0)
+#define PRZYCISK_EWA (1<<1)
 
 #define STAN_NORMALNY 0
 #define STAN_AWARIA 1
 #define STAN_EWAKUACJA 2
-#define PRZYCISK_EWA (1<<1)
+
 
 unsigned char wlacz(unsigned char port, unsigned char urzadzenie) {
     return port | urzadzenie;
@@ -31,18 +33,7 @@ int main() {
     PORT_A = (PORT_A | (POMPA | SYRENA)) & ~(WENTYLATOR | SWIATLA);
     printf("%d\n", czy_wlaczone(PORT_B, CZUJNIK_DYMU));
 
-
-    while(1) {
-        if (czy_wlaczone(PORT_B, CZUJNIK_DYMU)) {
-            PORT_A = (PORT_A | (POMPA | SYRENA)) & ~(WENTYLATOR | SWIATLA);
-        }
-        else {
-            PORT_A = (PORT_A | (WENTYLATOR | SWIATLA)) & ~(POMPA | SYRENA);
-        }
-    }
-
-    unsigned char stan_fabryki = 0; //lub 0b00000000
-    unsigned char stan_fabryki = STAN_NORMALNY;
+    unsigned char stan_fabryki = 0; //lub = 0b00000000 lub = STAN_NORMALNY;
 
 while(1) {
     switch(stan_fabryki) {
@@ -57,7 +48,7 @@ while(1) {
             }
            else {
                 stan_fabryki = STAN_NORMALNY; //jesli nie ma awarii ani ewakuacji, pozostajemy w stanie normalnym
-            }
+            } //w zasadzie nie ma potrzeby tego else, bo stan_fabryki juz jest ustawiony na STAN_NORMALNY, ale dla przejrzystosci kodu zostawiamy
             
             break; 
             
@@ -72,7 +63,7 @@ while(1) {
             }
             else {
                 stan_fabryki = STAN_AWARIA; //jesli nie ma ewakuacji ani powrotu do normalnego stanu, pozostajemy w stanie awarii
-            }
+            } //w zasadzie nie ma potrzeby tego else, bo stan_fabryki juz jest ustawiony na STAN_AWARIA, ale dla przejrzystosci kodu zostawiamy
             break;
             
         case STAN_EWAKUACJA:
@@ -86,7 +77,7 @@ while(1) {
             }
             else {
                 stan_fabryki = STAN_EWAKUACJA; //jesli nie ma powrotu do normalnego stanu ani awarii, pozostajemy w stanie ewakuacji
-            }
+            } //w zasadzie nie ma potrzeby tego else, bo stan_fabryki juz jest ustawiony na STAN_EWAKUACJA, ale dla przejrzystosci kodu zostawiamy
             break;
     }
 }
