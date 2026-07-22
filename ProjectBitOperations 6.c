@@ -39,7 +39,8 @@ int main() {
         }
     }
 
-
+    unsigned char stan_fabryki = 0; //lub 0b00000000
+    unsigned char stan_fabryki = STAN_NORMALNY;
 
 
     return 0;
