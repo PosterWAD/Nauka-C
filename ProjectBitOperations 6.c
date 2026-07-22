@@ -4,7 +4,9 @@
 #define SWIATLA (1<<2)
 #define SYRENA (1<<7)
 #define CZUJNIK_DYMU (1<<0)
-
+#define STAN_NORMALNY 0
+#define STAN_AWARIA 1
+#define STAN_EWAKUACJA 2
 
 unsigned char wlacz(unsigned char port, unsigned char urzadzenie) {
     return port | urzadzenie;
@@ -30,7 +32,7 @@ int main() {
 
     while(1) {
         if (czy_wlaczone(PORT_B, CZUJNIK_DYMU)) {
-        PORT_A = (PORT_A | (POMPA | SYRENA)) & ~(WENTYLATOR | SWIATLA);
+            PORT_A = (PORT_A | (POMPA | SYRENA)) & ~(WENTYLATOR | SWIATLA);
         }
         else {
             PORT_A = (PORT_A | (WENTYLATOR | SWIATLA)) & ~(POMPA | SYRENA);
