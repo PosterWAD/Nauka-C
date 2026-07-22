@@ -42,6 +42,20 @@ int main() {
     unsigned char stan_fabryki = 0; //lub 0b00000000
     unsigned char stan_fabryki = STAN_NORMALNY;
 
+    while(1) {
+        switch(stan_fabryki) {
+            case STAN_NORMALNY:
+                PORT_A = (PORT_A | (WENTYLATOR | SWIATLA)) & ~(POMPA | SYRENA);
+                break;
+            case STAN_AWARIA:
+                PORT_A = (PORT_A | (POMPA | SYRENA)) & ~(WENTYLATOR | SWIATLA);
+                break;
+            case STAN_EWAKUACJA:
+                PORT_A = (PORT_A | (POMPA | SYRENA)) & ~(WENTYLATOR | SWIATLA);
+                break;
+        }
+    }
 
+    
     return 0;
 }
