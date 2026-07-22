@@ -3,6 +3,8 @@
 #define WENTYLATOR (1<<1)
 #define SWIATLA (1<<2)
 #define SYRENA (1<<7)
+#define CZUJNIK_DYMU (1<<0)
+
 
 unsigned char wlacz(unsigned char port, unsigned char urzadzenie) {
     return port | urzadzenie;
@@ -18,10 +20,12 @@ int czy_wlaczone(unsigned char port, unsigned char urzadzenie) {
 
 int main() {
     unsigned char PORT_A = 0b00000000;
-    
+    unsigned char PORT_B = 0b00000000;
+
     PORT_A = wlacz(PORT_A, POMPA | SYRENA);
     PORT_A = wylacz(PORT_A, WENTYLATOR | SWIATLA);
-    PORT_A =| (POMPA | SYRENA) & ~(WENTYLATOR | SWIATLA);
+    PORT_A = (PORT_A | (POMPA | SYRENA)) & ~(WENTYLATOR | SWIATLA);
+    printf("%d\n", czy_wlaczone(PORT_B, CZUJNIK_DYMU));
 
     return 0;
 }
