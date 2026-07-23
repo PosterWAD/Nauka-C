@@ -27,12 +27,18 @@ void aktualizuj_system(struct SystemBezpieczenstwa *system){
     switch(system->stan_fabryki) {
         case STAN_NORMALNY:
             system->port_wejsciowy = (STAN_NORMALNY | POMPA | WENTYLATOR | SWIATLA) & ~SYRENA;
+            if (czy_wlaczone(system->port_wejsciowy, CZUJNIK_DYMU)) {
+                system->stan_fabryki = STAN_AWARIA;
+            }
+            else if (czy_wlaczone(system->port_wejsciowy, PRZYCISK_EWA)) {
+                system->stan_fabryki = STAN_EWAKUACJA;
+            }
             break;
         case STAN_AWARIA:
-            system->... = STAN_EWAKUACJA;
+            system->port_wejsciowy = (STAN_AWARIA | SWIATLA | SYRENA) & ~(POMPA | WENTYLATOR);
             break;
         case STAN_EWAKUACJA:
-            system->... = STAN_NORMALNY;
+            system->port_wejsciowy = (STAN_EWAKUACJA | SYRENA) & ~(POMPA | WENTYLATOR | SWIATLA);
             break;
         default:
             break;
