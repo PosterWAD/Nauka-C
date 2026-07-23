@@ -66,6 +66,7 @@ int main() {
             printf("Podaj stan systemu (0 - normalny, 1 - awaria, 2 - ewakuacja): ");
             scanf("%d", &stan_wejsciowy);
         }
+        system.port_wejsciowy = stan_wejsciowy;
         aktualizuj_system(&system);
     }
     
