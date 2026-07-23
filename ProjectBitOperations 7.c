@@ -26,29 +26,29 @@ int czy_wlaczone(unsigned char port, unsigned char urzadzenie) {
 void aktualizuj_system(struct SystemBezpieczenstwa *system){
     switch(system->stan_fabryki) {
         case STAN_NORMALNY:
-            system->port_wejsciowy = (STAN_NORMALNY | POMPA | WENTYLATOR | SWIATLA) & ~SYRENA;
-            if (czy_wlaczone(system->port_wejsciowy, CZUJNIK_DYMU)) {
+            system->port_wyjsciowy = (POMPA | WENTYLATOR | SWIATLA) & ~SYRENA;
+            if (czy_wlaczone(system->port_wyjsciowy, CZUJNIK_DYMU)) {
                 system->stan_fabryki = STAN_AWARIA;
             }
-            else if (czy_wlaczone(system->port_wejsciowy, PRZYCISK_EWA)) {
+            else if (czy_wlaczone(system->port_wyjsciowy, PRZYCISK_EWA)) {
                 system->stan_fabryki = STAN_EWAKUACJA;
             }
             break;
         case STAN_AWARIA:
-            system->port_wejsciowy = (STAN_AWARIA | SWIATLA | SYRENA) & ~(POMPA | WENTYLATOR);
-            if (!czy_wlaczone(system->port_wejsciowy, CZUJNIK_DYMU)) {
+            system->port_wyjsciowy = (SWIATLA | SYRENA) & ~(POMPA | WENTYLATOR);
+            if (!czy_wlaczone(system->port_wyjsciowy, CZUJNIK_DYMU)) {
                 system->stan_fabryki = STAN_NORMALNY;
             }
-            else if (czy_wlaczone(system->port_wejsciowy, PRZYCISK_EWA)) {
+            else if (czy_wlaczone(system->port_wyjsciowy, PRZYCISK_EWA)) {
                 system->stan_fabryki = STAN_EWAKUACJA;
             }
             break;
         case STAN_EWAKUACJA:
-            system->port_wejsciowy = (STAN_EWAKUACJA | SYRENA) & ~(POMPA | WENTYLATOR | SWIATLA);
-            if (!czy_wlaczone(system->port_wejsciowy, PRZYCISK_EWA)) {
+            system->port_wyjsciowy = (SYRENA) & ~(POMPA | WENTYLATOR | SWIATLA);
+            if (!czy_wlaczone(system->port_wyjsciowy, PRZYCISK_EWA)) {
                 system->stan_fabryki = STAN_NORMALNY;
             }
-            else if (czy_wlaczone(system->port_wejsciowy, CZUJNIK_DYMU)) {
+            else if (czy_wlaczone(system->port_wyjsciowy, CZUJNIK_DYMU)) {
                 system->stan_fabryki = STAN_AWARIA;
             }
             break;
@@ -59,8 +59,6 @@ void aktualizuj_system(struct SystemBezpieczenstwa *system){
 
 int main() {
     struct SystemBezpieczenstwa system = {0, 0, 0}; //zamiast wpisać system.port_wejsciowy = 0, system.port_wyjsciowy = 0, system.stan_fabryki = 0 można od razu zainicjalizować strukturę w momencie jej deklaracji
-    unsigned char port_wejsciowy = system.port_wejsciowy;
-    unsigned char port_wyjsciowy = system.port_wyjsciowy;
 
     while(1) {
         aktualizuj_system(&system);
