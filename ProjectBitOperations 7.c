@@ -62,10 +62,15 @@ int main() {
     int stan_wejsciowy = -1;
 
     while(1) {
+        if (stan_wejsciowy == 9) {
+            break; // Wyjście z programu
+        }
         if (stan_wejsciowy < 0 || stan_wejsciowy > 2) {
             printf("Podaj stan systemu (0 - normalny, 1 - awaria, 2 - ewakuacja): ");
             scanf("%d", &stan_wejsciowy);
+        continue;
         }
+        
         system.port_wejsciowy = stan_wejsciowy;
         aktualizuj_system(&system);
     }
