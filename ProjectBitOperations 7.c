@@ -14,8 +14,8 @@
 #define STAN_AWARIA    1
 #define STAN_EWAKUACJA 2
 struct SystemBezpieczenstwa {
-    unsigned char port_wejsciowy;
-    unsigned char port_wyjsciowy;
+    unsigned char port_wejsciowy; //podłączone są CZUJNIK_DYMU i PRZYCISK_EWA  
+    unsigned char port_wyjsciowy; //podłączone są POMPA, WENTYLATOR, SWIATLA i SYRENA
     unsigned char stan_fabryki;
 };
 
@@ -27,28 +27,28 @@ void aktualizuj_system(struct SystemBezpieczenstwa *system){
     switch(system->stan_fabryki) {
         case STAN_NORMALNY:
             system->port_wyjsciowy = (POMPA | WENTYLATOR | SWIATLA) & ~SYRENA;
-            if (czy_wlaczone(system->port_wyjsciowy, CZUJNIK_DYMU)) {
+            if (czy_wlaczone(system->port_wejsciowy, CZUJNIK_DYMU)) {
                 system->stan_fabryki = STAN_AWARIA;
             }
-            else if (czy_wlaczone(system->port_wyjsciowy, PRZYCISK_EWA)) {
+            else if (czy_wlaczone(system->port_wejsciowy, PRZYCISK_EWA)) {
                 system->stan_fabryki = STAN_EWAKUACJA;
             }
             break;
         case STAN_AWARIA:
             system->port_wyjsciowy = (SWIATLA | SYRENA) & ~(POMPA | WENTYLATOR);
-            if (!czy_wlaczone(system->port_wyjsciowy, CZUJNIK_DYMU)) {
+            if (!czy_wlaczone(system->port_wejsciowy, CZUJNIK_DYMU)) {
                 system->stan_fabryki = STAN_NORMALNY;
             }
-            else if (czy_wlaczone(system->port_wyjsciowy, PRZYCISK_EWA)) {
+            else if (czy_wlaczone(system->port_wejsciowy, PRZYCISK_EWA)) {
                 system->stan_fabryki = STAN_EWAKUACJA;
             }
             break;
         case STAN_EWAKUACJA:
             system->port_wyjsciowy = (SYRENA) & ~(POMPA | WENTYLATOR | SWIATLA);
-            if (!czy_wlaczone(system->port_wyjsciowy, PRZYCISK_EWA)) {
+            if (!czy_wlaczone(system->port_wejsciowy, PRZYCISK_EWA)) {
                 system->stan_fabryki = STAN_NORMALNY;
             }
-            else if (czy_wlaczone(system->port_wyjsciowy, CZUJNIK_DYMU)) {
+            else if (czy_wlaczone(system->port_wejsciowy, CZUJNIK_DYMU)) {
                 system->stan_fabryki = STAN_AWARIA;
             }
             break;
