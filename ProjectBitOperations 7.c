@@ -59,8 +59,13 @@ void aktualizuj_system(struct SystemBezpieczenstwa *system){
 
 int main() {
     struct SystemBezpieczenstwa system = {0, 0, 0}; //zamiast wpisać system.port_wejsciowy = 0, system.port_wyjsciowy = 0, system.stan_fabryki = 0 można od razu zainicjalizować strukturę w momencie jej deklaracji
+    int stan_wejsciowy = -1;
 
     while(1) {
+        if (stan_wejsciowy < 0 || stan_wejsciowy > 2) {
+            printf("Podaj stan systemu (0 - normalny, 1 - awaria, 2 - ewakuacja): ");
+            scanf("%d", &stan_wejsciowy);
+        }
         aktualizuj_system(&system);
     }
     
