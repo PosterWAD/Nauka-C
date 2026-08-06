@@ -38,7 +38,21 @@ void aktualizuj_box(struct PuzzleBox *box) {
             break;
 
         case STAN_CZEKANIE_NA_KOD:
-
+            if (czy_wlaczone(box->wejscia, UKRYTY_PRZYCISK)) {
+                
+                if (czy_wlaczone(box->wejscia, PRZELACZNIK_1) &&
+                    !czy_wlaczone(box->wejscia, PRZELACZNIK_2) && //(!)
+                    czy_wlaczone(box->wejscia, PRZELACZNIK_3)) {
+                    
+                    box->stan_gry = STAN_OTWARTE;
+                } 
+                else {
+                    box->licznik_bledow++;
+                    if (box->licznik_bledow >= 3) {
+                        box->stan_gry = STAN_ZABLOKOWANE;
+                    }
+                }
+            }
             break;
 
         case STAN_OTWARTE:
