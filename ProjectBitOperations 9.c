@@ -56,7 +56,7 @@ void aktualizuj_box(struct PuzzleBox *box) {
             break;
 
         case STAN_OTWARTE:
-
+            box->wyjscia = DIODA_DOBRZE; 
             break;
             
         case STAN_ZABLOKOWANE:
