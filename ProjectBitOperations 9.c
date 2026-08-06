@@ -60,7 +60,7 @@ void aktualizuj_box(struct PuzzleBox *box) {
             break;
             
         case STAN_ZABLOKOWANE:
-
+            box->wyjscia = DIODA_ZLE | ZAMEK_MAG;
             break;
     }
 }
