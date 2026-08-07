@@ -4,12 +4,12 @@
 struct Silnik {
     unsigned int predkosc;      // Prędkość w km/h
     unsigned int obroty_rpm;
+    unsigned int bieg;          
     int temperatura_silnika;    // Temperatura w stopniach C 
     int tryb_awaryjny;          //1 = awaria/przegrzanie
 };
 
 void aktualizuj_silnik(struct Silnik *wskaznik_na_silnik);
-
 void wlacz_zaplon(struct Silnik *wskaznik_na_silnik);
 void wcisnij_gaz(struct Silnik *wskaznik_na_silnik);
 void wcisnij_hamulec(struct Silnik *wskaznik_na_silnik);
