@@ -23,5 +23,10 @@ void wcisnij_gaz(struct Silnik *wskaznik_na_silnik) {
 }
 
 void wcisnij_hamulec(struct Silnik *wskaznik_na_silnik) {
-
+    wskaznik_na_silnik->predkosc -= 5;
+    wskaznik_na_silnik->obroty_rpm -= 400;
+    if ((wskaznik_na_silnik->obroty_rpm) < 800) {
+        wskaznik_na_silnik->bieg -= 1;
+        wskaznik_na_silnik->obroty_rpm = 2000;     
+    }
 }
