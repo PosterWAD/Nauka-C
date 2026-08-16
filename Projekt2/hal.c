@@ -15,3 +15,8 @@ void HAL_Inicjalizacja(void) {
 void HAL_WlaczPompe(void) {
     REJESTR_WYJSCIA |= PIN_POMPA;
 }
+
+void HAL_WylaczPompe(void) {
+    REJESTR_WYJSCIA &= ~PIN_POMPA;
+}
+
