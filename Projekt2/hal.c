@@ -27,3 +27,8 @@ void HAL_WlaczAlarm(void) {
 void HAL_WylaczAlarm(void) {
     REJESTR_WYJSCIA &= ~PIN_ALARM;
 }
+
+unsigned int HAL_CzytajCisnienie(void) {
+    return REJESTR_ADC_CISNIENIE;
+}
+
