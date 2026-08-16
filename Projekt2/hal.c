@@ -20,3 +20,10 @@ void HAL_WylaczPompe(void) {
     REJESTR_WYJSCIA &= ~PIN_POMPA;
 }
 
+void HAL_WlaczAlarm(void) {
+    REJESTR_WYJSCIA |= PIN_ALARM;
+}
+
+void HAL_WylaczAlarm(void) {
+    REJESTR_WYJSCIA &= ~PIN_ALARM;
+}
