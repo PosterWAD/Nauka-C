@@ -32,3 +32,7 @@ unsigned int HAL_CzytajCisnienie(void) {
     return REJESTR_ADC_CISNIENIE;
 }
 
+void HAL_SymulujCzujnik(unsigned int nowe_cisnienie) {
+    REJESTR_ADC_CISNIENIE = nowe_cisnienie;
+}
+
