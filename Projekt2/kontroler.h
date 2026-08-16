@@ -15,5 +15,7 @@ struct KontrolerProcesu {
     unsigned int limit_cisnienia_min;
 };
 
+void Kontroler_Inicjalizacja(struct KontrolerProcesu *k);
+void Kontroler_Aktualizuj(struct KontrolerProcesu *k);
 
 #endif // KONTROLER_H
